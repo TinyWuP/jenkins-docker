@@ -44,7 +44,9 @@
 ## 运行
     宿主机创建一个jenkins用户
     # useradd jenkins
-    # mkdir -p /usr/local/jenkins_home 
-    # chown jenkins:jenkins /usr/local/jenkins_home/
+    # mkdir -p /usr/local/{jenkins_home,jenkins_maven,jenkins_ansible}
+    # chown jenkins:jenkins /usr/local/{jenkins_home,jenkins_maven,jenkins_ansible}
+    # maven引用的nexus地址配置文件settings.xml，通过手工修改后，放到/usr/local/jenkins_maven目录下面，然后挂载进去 
 
-    # docker run -itd --name jenkins -p 8888:8080 -p 50000:50000 -v /usr/local/jenkins_home:/var/jenkins_home -v /etc/ansible -v ~/.ssh:/root/.ssh registry.cn-hangzhou.aliyuncs.com/tinywu/jenkins-ansible-maven-node:latest
+    # docker run -itd --name jenkins -p 8888:8080 -p 50000:50000 -v /usr/local/jenkins_home:/var/jenkins_home -v /usr/local/jenkins_ansible:/etc/ansible -v /usr/local/jenkins_maven/settings.xml:/usr/local/apache-maven/conf/settings.xml -v ~/.ssh:/root/.ssh registry.cn-hangzhou.aliyuncs.com/tinywu/jenkins-ansible-maven-node:latest
+
