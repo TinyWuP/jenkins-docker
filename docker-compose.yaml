@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins:
+    restart: always
+    image: registry.cn-hangzhou.aliyuncs.com/tinywu/jenkins-ansible-maven-node:latest
+    container_name: jenkins
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data/jenkins_home:/var/jenkins_home
+      - ./ansible.cfg:/etc/ansible/ansible.cfg
+      - ./settings.xml:/usr/local/apache-maven/conf/settings.xml
+      - /root/.ssh:/root/.ssh
