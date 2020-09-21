@@ -9,6 +9,8 @@ services:
       - '50000:50000'
     environment:
       - TZ=Asia/Shanghai
+      - JENKINS_OPTS="--prefix=/jenkins" 
+      - JENKINS_ARGS="--prefix=/jenkins" 
     volumes:
       - ./data/jenkins_home:/var/jenkins_home
       - ./ansible.cfg:/etc/ansible/ansible.cfg
